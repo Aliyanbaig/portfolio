@@ -42,5 +42,11 @@ jobs:
       - name: Build
         run: vercel build --prod --token="$VERCEL_TOKEN"
 
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Check responsive layouts and interactions
+        run: npm run test:e2e
+
       - name: Deploy to production
         run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
