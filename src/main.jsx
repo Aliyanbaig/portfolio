@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 import { PROFILE, projects } from "./content.js";
+import { behanceProjects } from "./behance-projects.js";
 
 const BOOKING_URL = "";
 const bookingHref =
@@ -679,9 +680,27 @@ function SelectedWorks() {
       <SectionHeading
         label="SELECTED WORK"
         title="Work shaped by people & purpose"
-        copy="A small selection of work and experience described in my CV."
+        copy="Explore my latest visual work on Behance, alongside selected professional experience."
       />
       <div className="work-grid">
+        {behanceProjects.map((project) => (
+          <a className="work-card behance-card reveal" href={project.href}
+            key={project.id} target="_blank" rel="noopener noreferrer"
+            aria-label={`${project.title} — View on Behance (opens in a new tab)`}>
+            <div className="behance-cover">
+              <img src={project.cover} alt={project.title} width="808" height="632"
+                loading="lazy" decoding="async" />
+            </div>
+            <div className="work-meta">
+              <div>
+                <h3>{project.title}</h3>
+                <p>{project.owners.join(" · ")}</p>
+                <span className="behance-link-label">View on Behance ↗</span>
+              </div>
+              <span className="work-arrow" aria-hidden="true"><ArrowUpRight /></span>
+            </div>
+          </a>
+        ))}
         {projects.map((project, index) => (
           <WorkCard key={project.id} project={project} index={index} />
         ))}

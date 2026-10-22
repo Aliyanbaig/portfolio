@@ -23,6 +23,11 @@ for (const width of [320, 390, 768, 1024, 1440, 1920, 2560]) {
       // Traverse every section so lazy images and tall reveal targets are exercised.
       for (const section of await page.locator("main > section").all())
         await section.scrollIntoViewIfNeeded();
+      // Long galleries may span several viewports within a single section.
+      for (const image of await page.locator('img[loading="lazy"]').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+      }
       await page.locator("footer").scrollIntoViewIfNeeded();
       await expect
         .poll(() =>
