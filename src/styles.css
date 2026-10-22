@@ -1833,6 +1833,8 @@ svg {
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-image {
+    /* Cover the full 18px parallax travel, including short viewports. */
+    inset: -20px 0;
     transform: translateY(calc(var(--hero-scroll-shift, 0px) * 0.15))
       scale(1.04);
   }
