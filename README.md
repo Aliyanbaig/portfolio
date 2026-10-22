@@ -28,3 +28,5 @@ Production: https://portfolio-five-vert-npb4fujz7y.vercel.app/
 Contact and booking calls to action use the existing email and phone links. There is no form backend or calendar integration in this project.
 
 See [AUDIT.md](AUDIT.md) for findings and verification scope.
+
+The first eight Behance projects are archived in [exports/behance](exports/behance/README.md), with JSON, CSV, and cover images.
